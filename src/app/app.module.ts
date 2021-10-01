@@ -14,6 +14,7 @@ import { EditBookComponent } from './edit-book/edit-book.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SortDirective } from './directive/sort.directive';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

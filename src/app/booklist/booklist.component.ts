@@ -12,10 +12,12 @@ export class BooklistComponent implements OnInit {
 
   searchText: any
 
-  book_list: Book[]
+  book_list!: Book[]
 
   constructor(private bookService: BookService, private userService: UserService) {
-    this.book_list = bookService.getBooks()
+    bookService.getBooks().subscribe(
+      data => this.book_list = data
+    )
    }
 
   ngOnInit(): void {

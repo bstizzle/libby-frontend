@@ -14,7 +14,10 @@ export class EditBookComponent implements OnInit {
 
   constructor(private bookService: BookService, private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe((parameters) =>
-      this.currentBook = bookService.getBook(parameters['id']))
+      bookService.getBook(parameters['id']).subscribe(
+        data => this.currentBook = data
+      )
+    )
       
    }
 
@@ -24,10 +27,11 @@ export class EditBookComponent implements OnInit {
   UpdateBook()
   {
     this.route.params.subscribe((parameters) =>
-      this.bookService.updateBook(parameters['id'], this.currentBook)
+      this.bookService.updateBook(parameters['id'], this.currentBook).subscribe(
+        () => this.router.navigate(['/books'])
+      )
     )
 
-    this.router.navigate(['/books'])
   }
 
 }

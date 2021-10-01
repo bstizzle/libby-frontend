@@ -14,7 +14,9 @@ export class BookViewComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private bookService: BookService) {
     route.params.subscribe((parameters) =>
-      this.currentBook = bookService.getBook(parameters['id'])
+      bookService.getBook(parameters['id']).subscribe(
+        data => this.currentBook = data
+      )
     )
    }
 
