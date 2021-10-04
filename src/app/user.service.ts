@@ -7,7 +7,7 @@ import { User } from './user';
 })
 export class UserService {
 
-  user_list: User[] = [new User("klineconnor", "*****", "klineconnor@yahoo.com")]
+  user_list: User[] = [new User("klineconnor", "*****", "klineconnor@yahoo.com", true)]
 
   current_user: User = this.user_list[0]
 

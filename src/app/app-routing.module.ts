@@ -5,15 +5,21 @@ import { BookViewComponent } from './book-view/book-view.component';
 import { BooklistComponent } from './booklist/booklist.component';
 import { EditBookComponent } from './edit-book/edit-book.component';
 import { HomeComponent } from './home/home.component';
+import { UserGuard } from './user.guard';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { BookListGuard } from './book-list.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'book/:id', component: BookViewComponent},
+  {path: 'book/:id', 
+  canActivate: [BookListGuard],
+  component: BookViewComponent},
   {path: 'books', component: BooklistComponent},
   {path: 'addBook', component: AddBookComponent},
-  {path: 'editBook/:id', component: EditBookComponent},
+  {path: 'editBook/:id',
+  canActivate: [UserGuard, BookListGuard],
+  component: EditBookComponent},
   {path: 'user', component: UserProfileComponent}
 ];
 
