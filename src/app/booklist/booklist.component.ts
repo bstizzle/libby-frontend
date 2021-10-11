@@ -10,6 +10,8 @@ import { UserService } from '../user.service';
 })
 export class BooklistComponent implements OnInit {
 
+  page: Number = 1
+
   searchText: any
 
   book_list!: Book[]

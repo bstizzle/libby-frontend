@@ -14,7 +14,11 @@ import { EditBookComponent } from './edit-book/edit-book.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SortDirective } from './directive/sort.directive';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { ErrorComponent } from './error/error.component'
+import { NgxPaginationModule } from 'ngx-pagination';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,10 @@ import { HttpClientModule } from '@angular/common/http'
     AddBookComponent,
     EditBookComponent,
     UserProfileComponent,
-    SortDirective
+    SortDirective,
+    ErrorComponent,
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,8 @@ import { HttpClientModule } from '@angular/common/http'
     FormsModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

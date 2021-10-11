@@ -7,9 +7,11 @@ import { User } from './user';
 })
 export class UserService {
 
-  user_list: User[] = [new User("klineconnor", "*****", "klineconnor@yahoo.com", true)]
+  isLoggedIn = false
 
-  current_user: User = this.user_list[0]
+  user_list: User[] = [new User("klineconnor", "password", "klineconnor@yahoo.com", true)]
+
+  current_user: User = new User('', '', '', false)
 
   constructor() { }
 
@@ -27,5 +29,29 @@ export class UserService {
   removeBook(id: number)
   {
     this.current_user.bookList.splice(id, 1)
+  }
+
+  logOut()
+  {
+    this.current_user = new User('', '', '', false)
+  }
+
+  logIn(userName: String, password: String): Boolean
+  {
+    if (this.user_list.some( user => user.user_name == userName))
+    {
+      const tempUser = this.user_list.find( user => user.user_name == userName)
+      if (tempUser?.password == password)
+      {
+        this.current_user = tempUser
+        this.isLoggedIn = true
+        return true
+      } else {
+        return false
+      }
+    } else {
+      return false
+    }
+      
   }
 }

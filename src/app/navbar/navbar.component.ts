@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../user';
 import { UserService } from '../user.service';
 
@@ -9,13 +10,27 @@ import { UserService } from '../user.service';
 })
 export class NavbarComponent implements OnInit {
 
-  currentUser: User
+  currentUser!: User
 
-  constructor(private userService: UserService) {
-    this.currentUser = userService.current_user
+  isLoggedin = false
+
+  constructor(private router: Router, private userService: UserService) {
+    
    }
 
   ngOnInit(): void {
+    this.router.events.subscribe(event => {
+      if (event.constructor.name === "NavigationEnd") {
+       this.isLoggedin = this.userService.isLoggedIn;
+       this.currentUser = this.userService.current_user
+      }
+    })
+  }
+
+  Logout()
+  {
+    console.log("logged out")
+    this.userService.logOut()
   }
 
 }

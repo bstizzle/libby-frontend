@@ -8,6 +8,9 @@ import { HomeComponent } from './home/home.component';
 import { UserGuard } from './user.guard';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { BookListGuard } from './book-list.guard';
+import { ErrorComponent } from './error/error.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -20,7 +23,10 @@ const routes: Routes = [
   {path: 'editBook/:id',
   canActivate: [UserGuard, BookListGuard],
   component: EditBookComponent},
-  {path: 'user', component: UserProfileComponent}
+  {path: 'user', component: UserProfileComponent},
+  {path: 'error', component: ErrorComponent},
+  {path: 'signup', component: SignupComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

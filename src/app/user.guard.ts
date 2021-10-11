@@ -19,7 +19,7 @@ export class UserGuard implements CanActivate {
     {
       return true
     } else {
-      this.router.navigate(['/home'])
+      this.router.navigate(['/error'])
       return false
     }
   }
